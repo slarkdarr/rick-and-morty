@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { resourceLimits } from "worker_threads";
 import styles from "../styles/Home.module.css";
@@ -80,16 +81,18 @@ export default function Home({ data }) {
 
             return (
               <li key={id} className={styles.card}>
-                <a href="#">
-                  <Image
-                    loader={() => src}
-                    src={image}
-                    alt={name}
-                    width={200}
-                    height={200}
-                  />
-                  <h2>{name}</h2>
-                </a>
+                <Link href="/character/[id]" as={`/character/${id}`}>
+                  <a>
+                    <Image
+                      loader={() => src}
+                      src={image}
+                      alt={name}
+                      width="200"
+                      height="200"
+                    />
+                    <h2>{name}</h2>
+                  </a>
+                </Link>
               </li>
             );
           })}
