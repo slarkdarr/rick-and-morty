@@ -83,6 +83,7 @@ export default function Home({ data }) {
                   <a>
                     <Image
                       loader={() => src}
+                      unoptimized={true}
                       src={image}
                       alt={name}
                       width="200"

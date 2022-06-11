@@ -1,3 +1,4 @@
+import Moment from "react-moment";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../../../styles/Home.module.css";
@@ -15,8 +16,18 @@ export async function getServerSideProps({ query }) {
   };
 }
 
+// export async function getEpisode({ episodeEndpoint }) {
+//   const res = await fetch(episodeEndpoint);
+//   const data = await res.json();
+//   return {
+//     episodeData: data,
+//   };
+// }
+
 export default function Character({ data }) {
-  const { name, image, gender, location, origin, species, status } = data;
+  const { name, image, gender, location, origin, species, status, created } =
+    data;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -52,6 +63,10 @@ export default function Character({ data }) {
               </li>
               <li>
                 <strong>Originally From:</strong> {origin?.name}
+              </li>
+              <li>
+                <strong>Created At:</strong>{" "}
+                <Moment format="YYYY/MM/DD hh:mm:ss">{created}</Moment>
               </li>
             </ul>
           </div>
